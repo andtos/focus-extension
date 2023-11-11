@@ -8,7 +8,7 @@ function timeOut(){
     document.documentElement.appendChild(screenBlockerContainer);
 
     const element = screenBlockerContainer.querySelector("iframe");
-    element.style.position = "fixed";
+    element.style.position = "absolute";
     element.style.top = "0";
     element.style.left = "0";
     element.style.width = "1000%";
@@ -17,8 +17,7 @@ function timeOut(){
     element.style.zIndex = 1000;
 
     setTimeout(() => {
-    screenBlockerContainer.style.display = "none";
-
+    document.documentElement.removeChild(screenBlockerContainer)
     }, 10000);
 }
 

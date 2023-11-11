@@ -3,7 +3,7 @@ function timeOut(){
     <iframe id="content">
     </iframe>`;
 
-    const screenBlockerContainer = document.createElement("body");
+    const screenBlockerContainer = document.createElement("div");
     screenBlockerContainer.innerHTML = screenBlocker;
     document.documentElement.appendChild(screenBlockerContainer);
 

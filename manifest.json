@@ -3,7 +3,7 @@
   "name": "Focus",
   "version": "1.0",
   "permissions": [
-    "activeTab", "scripting"
+    "activeTab", "scripting", "tabs"
   ],
   "description": "Reflect on your actions",
   "content_scripts": [

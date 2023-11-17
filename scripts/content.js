@@ -1,3 +1,7 @@
+function tabIsFocused () {
+  return !document.hidden
+}
+
 function timeOut () {
   const screenBlockerContainer = document.createElement('div')
   screenBlockerContainer.innerHTML = '<iframe id="content"></iframe>'
@@ -16,7 +20,10 @@ function timeOut () {
   cancelButton.style.zIndex = 2000
   cancelButton.style.left = '50%'
   cancelButton.style.top = '50%'
-  screenBlockerContainer.appendChild(cancelButton)
+
+  if (!tabIsFocused()) {
+    screenBlockerContainer.appendChild(cancelButton)
+  }
 
   document.documentElement.appendChild(screenBlockerContainer)
 

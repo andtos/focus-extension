@@ -1,23 +1,36 @@
 function timeOut(){
-    const screenBlocker = `
-    <iframe id="content">
-    </iframe>`;
-
+    
     const screenBlockerContainer = document.createElement("div");
-    screenBlockerContainer.innerHTML = screenBlocker;
+    screenBlockerContainer.innerHTML = `<iframe id="content"></iframe>`;
+    screenBlockerContainer.style.position = "absolute";
+    screenBlockerContainer.style.top = "0";
+    screenBlockerContainer.style.left = "0";
+    screenBlockerContainer.style.width = "1000%";
+    screenBlockerContainer.style.height = "1000%";
+    screenBlockerContainer.style.backgroundColor = "black";
+    screenBlockerContainer.style.zIndex = 1000;
+
+    const cancelButton = document.createElement("button");
+    cancelButton.textContent = "Cancel Timeout";
+    cancelButton.className = "cancelButton";
+    cancelButton.style.position = "sticky";
+    cancelButton.style.zIndex = 2000;
+    cancelButton.style.left = '50%';
+    cancelButton.style.top = '50%';
+    screenBlockerContainer.appendChild(cancelButton)
+
     document.documentElement.appendChild(screenBlockerContainer);
 
-    const element = screenBlockerContainer.querySelector("iframe");
-    element.style.position = "absolute";
-    element.style.top = "0";
-    element.style.left = "0";
-    element.style.width = "1000%";
-    element.style.height = "1000%";
-    element.style.backgroundColor = "black";
-    element.style.zIndex = 1000;
+    wasClicked = false;
+    cancelButton.addEventListener("click", () => {
+        document.documentElement.removeChild(screenBlockerContainer);
+        wasClicked = true;
+    });
 
     setTimeout(() => {
-    document.documentElement.removeChild(screenBlockerContainer)
+        if(!wasClicked){
+            document.documentElement.removeChild(screenBlockerContainer);
+        }
     }, 10000);
 }
 
